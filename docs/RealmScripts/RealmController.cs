@@ -14,7 +14,6 @@ using System.Threading.Tasks;
 using Realms.Sync;
 using System.Linq;
 
-// :snippet-start: RealmController
 public class RealmController : MonoBehaviour
 {
     private static Realm realm;
@@ -212,4 +211,3 @@ public class RealmController : MonoBehaviour
         return (currentStat.EnemiesDefeated + 1) * (currentStat.TokensCollected + 1) + bonusPoints;
     }
 }
-// ::snippet-end:

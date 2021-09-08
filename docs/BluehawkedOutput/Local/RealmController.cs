@@ -160,4 +160,3 @@ public class RealmController : MonoBehaviour
         return (currentStat.EnemiesDefeated + 1) * (currentStat.TokensCollected + 1) + bonusPoints;
     }
 }
-:

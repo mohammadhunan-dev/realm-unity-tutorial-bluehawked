@@ -7,6 +7,7 @@
     - StatModel.cs - A RealmObject containing a list of stats (tokens collected, enemies defeated, points, timestamp), and a link to the statOwner
     - RealmController.cs - Where most of the Realm Logic takes place: opens a realm, creates an on register function, an onPressLogin function, logic to calculate scores, logic to update the current score card, logic to restart the game and start a new realm by creating a new Stat(), and should contain logic to logout
     - Constants.cs - has your app id
+    - ScoreCardManager.cs - Manages your scorecard visually in the UI
 - UI ToolKit:
     - AuthenticationScreen.uxml - Entire UI for Auth Screen (modes are toggled with AuthenticationManager.cs)
     - Leaderboard.uxml - Mostly empty UI file, since the leaderboard is generated after reading from the Realm, most of the leaderboard UI is actually created in LeaderboardManager.cs

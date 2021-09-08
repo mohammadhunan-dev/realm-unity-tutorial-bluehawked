@@ -24,3 +24,5 @@ To do:
 - Add scripts
 - Add com.unity.ui (toolkit); com.unity.ui.builder (builder)
 - Create folder assets/UI ToolKit
+- In Hierarchy, create empty (rename - Canvas)
+- Add "ScoreCard", "Leaderboard", "AuthenticationScreen" UI ToolKit > UI Documents to the Canvas Hierarchy

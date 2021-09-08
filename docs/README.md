@@ -10,7 +10,7 @@
 - UI ToolKit:
     - AuthenticationScreen.uxml - Entire UI for Auth Screen (modes are toggled with AuthenticationManager.cs)
     - Leaderboard.uxml - Mostly empty UI file, since the leaderboard is generated after reading from the Realm, most of the leaderboard UI is actually created in LeaderboardManager.cs
-    - Stylesheet.uss - global styles containing classes applied to both the authentication screen and leaderboard
+    - Stylesheet.uss - global theme file containing classes applied to both the authentication screen and leaderboard
 
 - UnityHub Microgame Tutorial Precreated files:
     - Scripts/Gameplay/PlayerDeath.cs - a file created by Unity, used by us to call the RealmController to delete the current score and restart the game

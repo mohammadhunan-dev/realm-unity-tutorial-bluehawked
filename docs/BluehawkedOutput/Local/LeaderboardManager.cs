@@ -59,19 +59,9 @@ public class LeaderboardManager : MonoBehaviour
 
     public int getRealmPlayerTopStat()
     {
-        // :code-block-start: get-current-player-top-score
-        // :state-start: start
-        // TODO: Query the realm instance for the current player, find the current player's top score and return that value
-        // :state-uncomment-start: start
-        //  return 0;
-        // :state-uncomment-end:
-        // :state-end:
-        // :state-start: sync local     
         var realmPlayer = realm.All<Player>().Where(p => p.Name == username).First();
         var realmPlayerTopStat = realmPlayer.Stats.OrderByDescending(s => s.Score).First().Score;
         return realmPlayer.Stats.OrderByDescending(s => s.Score).First().Score;
-        // :state-end:
-        // :code-block-end:
     }
 
     void toggleUIVisible()
@@ -107,14 +97,7 @@ public class LeaderboardManager : MonoBehaviour
         displayTitle.text = "Leaderboard:";
         displayTitle.AddToClassList("display-title");
 
-        // :code-block-start: get-highest-scores-global-leaderboard
-        // :state-start: start
-        // TODO: Query the realm instance for all stats, and order by the highest scores to the lowest scores
-        // :state-end:
-        // :state-start: sync local
         topStats = realm.All<Stat>().OrderByDescending(s => s.Score).ToList();
-        // :state-end:
-        // :code-block-end:
         createTopStatListView();
     }
     public void createTopStatListView()
@@ -163,13 +146,6 @@ public class LeaderboardManager : MonoBehaviour
     }
     public void setStatListener()
     {
-        // :code-block-start: listen-for-stat-changes
-        // :state-start: start
-        // TODO: Create a listener that handles any changes to any Stat objects,
-        // if there are changes, call `setNewlyInsertedScores()` to determine if
-        // theres any new high scores and update the leaderboard in the UI
-        // :state-end:
-        // :state-start: sync local
         // Observe collection notifications. Retain the token to keep observing.
         listenerToken = realm.All<Stat>()
             .SubscribeForNotifications((sender, changes, error) =>
@@ -189,8 +165,6 @@ public class LeaderboardManager : MonoBehaviour
                 // we only need to check for inserted because scores can't be modified or deleted after the run is complete
                 
             });
-        // :state-end:
-        // :code-block-end:
     }
 
     public void setNewlyInsertedScores(int[] insertedIndices)
@@ -219,11 +193,6 @@ public class LeaderboardManager : MonoBehaviour
     }
     void OnDisable()
     {
-        // :code-block-start: leaderboard-cleanup-fn
-        // :state-start: start
-        // TODO: dispose of the realm instance and the listenerToken 
-        // :state-end:
-        // :state-start: sync local
         if (realm != null)
         {
             realm.Dispose();
@@ -233,7 +202,5 @@ public class LeaderboardManager : MonoBehaviour
         {
             listenerToken.Dispose();
         }
-        // :state-end:
-        // :code-block-end:
     }
 }

@@ -10,10 +10,23 @@
 - UI ToolKit:
     - AuthenticationScreen.uxml - Entire UI for Auth Screen (modes are toggled with AuthenticationManager.cs)
     - Leaderboard.uxml - Mostly empty UI file, since the leaderboard is generated after reading from the Realm, most of the leaderboard UI is actually created in LeaderboardManager.cs
-    - Stylesheet.uss - global styles containing classes applied to both the authentication screen and leaderboard
+    - scorecard.uxml - Mostly empty UI file, since the scorecard is generated after reading from the Realm, most of the leaderboard UI is actually created in LeaderboardManager.cs
+    - Stylesheet.uss - global theme file containing classes applied to both the authentication screen and leaderboard
 
 - UnityHub Microgame Tutorial Precreated files:
     - Scripts/Gameplay/PlayerDeath.cs - a file created by Unity, used by us to call the RealmController to delete the current score and restart the game
     - Scripts/Gameplay/PlayerEnemyCollision - a file created by Unity, used by us to call the RealmController to write to the current player state and += 1 to enemies defeated when a collision has occurred.
     - Scripts/Gameplay/PlayerEnteredVictoryZone.cs -  a file created by Unity, used by us to call the RealmController to call playerWon to calculate and write to final score, also displays the final score to the user
     - Scripts/Mechanics/TokenInstance.cs - a file created by Unity, used by us to call the RealmController to call collectToken() in order to record the collection of a token in the game
+
+
+
+To do:
+- Add scripts
+- Add com.unity.ui (toolkit); com.unity.ui.builder (builder)
+- Create folder assets/UI ToolKit
+- In Hierarchy, create empty (rename - Canvas)
+- Add "ScoreCard", "Leaderboard", "AuthenticationScreen" UI ToolKit > UI Documents to the Canvas Hierarchy
+- Attach "AuthenticationScreen.uxml" and "Leaderboard.uxml" to Source Assets of their respective UI Document
+- Attach StyleSheet.uss to each UI Toolkit view
+- Paste Stylesheet code

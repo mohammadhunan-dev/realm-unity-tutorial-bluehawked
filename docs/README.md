@@ -32,3 +32,4 @@ To do:
 - Attach StyleSheet.uss to each UI Toolkit view
 - Paste Stylesheet code
 - Attach "AuthenticationManager.cs" to Hierarchy's Canvas/Authentication
+- In hierarchy > Create empty > RealmController > Attach RealmController.cs to it

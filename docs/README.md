@@ -29,3 +29,4 @@ To do:
 - Add "ScoreCard", "Leaderboard", "AuthenticationScreen" UI ToolKit > UI Documents to the Canvas Hierarchy
 - Attach "AuthenticationScreen.uxml" and "Leaderboard.uxml" to Source Assets of their respective UI Document
 - Attach StyleSheet.uss to each UI Toolkit view
+- Paste Stylesheet code

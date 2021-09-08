@@ -30,3 +30,4 @@ To do:
 - Attach "AuthenticationScreen.uxml" and "Leaderboard.uxml" to Source Assets of their respective UI Document
 - Attach StyleSheet.uss to each UI Toolkit view
 - Paste Stylesheet code
+- Attach "AuthenticationManager.cs" to Hierarchy's Canvas/Authentication

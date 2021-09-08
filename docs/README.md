@@ -34,3 +34,9 @@ To do:
 - Attach "AuthenticationManager.cs" to Hierarchy's Canvas/Authentication
 - In hierarchy > Create empty > RealmController > Attach RealmController.cs to it
 - Attach "LeaderboardManager.cs" to Hierarchy's Canvas/LeaderboardManager
+
+
+
+Steps:
+1. Install UnityHub Tutorial
+2. Add UI Builder, UI Toolkit, Realm

@@ -26,3 +26,4 @@ To do:
 - Create folder assets/UI ToolKit
 - In Hierarchy, create empty (rename - Canvas)
 - Add "ScoreCard", "Leaderboard", "AuthenticationScreen" UI ToolKit > UI Documents to the Canvas Hierarchy
+- Attach "AuthenticationScreen.uxml" and "Leaderboard.uxml" to Source Assets of their respective UI Document

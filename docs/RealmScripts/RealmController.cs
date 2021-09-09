@@ -17,26 +17,37 @@ using System.Linq;
 public class RealmController : MonoBehaviour
 {
     private static Realm realm;
-    private static App realmApp;
     private static int runTime; // total amount of time you've been playing during this playthrough/run (losing/winning resets runtime)
     private static int bonusPoints = 0; // start with 0 bonus points and at the end of the game we add bonus points based on how long you played
 
     public static Player currentPlayer; // current logged in player
     public static Stat currentStat; // current stats for this run/playthrough
+
+    // :state-start: start local    
     public static Realm GetRealm()
+    // :state-end:
+    // :state-uncomment-start: sync
+    // public static async Task<Realm> GetRealm(Realms.Sync.User loggedInUser)
+    // :state-uncomment-end:
     {
         // :code-block-start: get-realm-fn
         // :state-start: start 
         // TODO: open a realm and return it
-        // :state-end: :state-start: local sync
+        // :state-end: :state-start: local
         realm = Realm.GetInstance();
         return realm;
         // :state-end:
+        // :state-uncomment-start: sync
+        // var syncConfiguration = new SyncConfiguration("UnityTutorialPartition", loggedInUser);
+        // return await Realm.GetInstanceAsync(syncConfiguration);
+        // :state-uncomment-end:
         // :code-block-end:
     }
+
+    // :code-block-start: realmcontroller-set-logged-in-user
+    // :state-start: start local
     public static void setLoggedInUser(string loggedInUser)
     {
-        // :code-block-start: set-logged-in-user
         realm = GetRealm();
         // :state-start: start
         // TODO: "Set the `currentPlayer` variable by querying the realm for the
@@ -78,8 +89,78 @@ public class RealmController : MonoBehaviour
         // :state-end:
 
         startGame();
-        // :code-block-end:
     }
+    // :state-end:
+    // :code-block-end:
+
+    // :code-block-start: realmcontroller-set-logged-in-user-synced
+    // :state-uncomment-start: sync
+    // public static async Task<Player> setLoggedInUser(string userInput, string passInput)
+    // {        
+    //     syncUser = await realmApp.LogInAsync(Credentials.EmailPassword(userInput, passInput));
+    //     if (syncUser != null)
+    //     {
+    //         realm = await GetRealm(syncUser);
+    //         currentPlayer = realm.Find<Player>(syncUser.Id);
+
+    //         if (currentPlayer != null)
+    //         {
+    //             var s1 = new Stat();
+    //             s1.StatOwner = currentPlayer;
+
+    //             realm.Write(() =>
+    //             {
+    //                 currentStat = realm.Add(s1);
+    //                 currentPlayer.Stats.Add(currentStat);
+    //             });
+
+    //             startGame();
+    //         }
+    //         else
+    //         {
+    //             Debug.Log("This player exists a MongoDB Realm User but not as a Realm Object, please delete the Sync User and create one ussing the register button");
+    //         }
+    //     }
+
+    //     return currentPlayer;
+    // }
+    // :state-uncomment-end:
+    // :code-block-end:
+
+    // :code-block-start: realmcontroller-press-register-sync
+    // :state-uncomment-start: sync
+    // public static async Task<Player> OnPressRegister(string userInput, string passInput)
+    // {
+    //     await realmApp.EmailPasswordAuth.RegisterUserAsync(userInput, passInput);
+    //     syncUser = await realmApp.LogInAsync(Credentials.EmailPassword(userInput, passInput));
+    //     realm = await GetRealm(syncUser);
+    //     Debug.Log($"Realm is located at: {realm.Config.DatabasePath}");
+
+    //     var p1 = new Player();
+    //     p1.Id = syncUser.Id;
+    //     p1.Name = userInput;
+
+    //     var s1 = new Stat();
+    //     s1.StatOwner = p1;
+
+
+    //     realm.Write(() =>
+    //     {
+    //         currentPlayer = realm.Add(p1);
+    //         currentStat = realm.Add(s1);
+    //         currentPlayer.Stats.Add(currentStat);
+    //     });
+
+    //     startGame();
+
+    //     Debug.Log("Game has started " + currentPlayer.Name);
+
+    //     return currentPlayer;
+    // }
+    // :state-uncomment-end:
+    // :code-block-end:
+
+    
 
     // startGame() begins the timer, increasing runTime every 10 seconds.
     // The less time a player takes to complete the playthrough/run, the more bonusPoints the player is rewarded

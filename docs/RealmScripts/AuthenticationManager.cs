@@ -100,23 +100,15 @@ public class AuthenticationManager : MonoBehaviour
     // :state-uncomment-end:
     // :code-block-end:
 
+    // :code-block-start: on-press-login
+    // :state-start: start local
     public static void onPressLogin()
     {
         try
         {
             root.AddToClassList("hide");
-        // :code-block-start: on-press-login
-        // :state-start: start
-        //  TODO: replace the loggedInUser variable with the user's input and pass it to RealmController's `setLoggedInUser()` method in order to authenticate
-        // :state-uncomment-start: start
-        //      loggedInUser = "<temporaryUserReplaceMe>";
-        // :state-uncomment-end: 
-        // :state-end:
-        // :state-start: local
             loggedInUser = userInput.value;
             RealmController.setLoggedInUser(loggedInUser);
-        // :state-end:
-        // :code-block-end:
             ScoreCardManager.setLoggedInUser(loggedInUser);
             LeaderboardManager.Instance.setLoggedInUser(loggedInUser);
         }
@@ -125,6 +117,8 @@ public class AuthenticationManager : MonoBehaviour
             Debug.Log("an exception was thrown:" + ex.Message);
         }
     }
+    // :state-end:
+    // :code-block-end:
 
     // :code-block-start: add-sync-register-login-click-handlers
     // :state-uncomment-start: sync

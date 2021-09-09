@@ -5,7 +5,12 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Realms;
 using System.Linq;
+// :code-block-start: add-sync-variables-leaderboard-manager
+// :state-uncomment-start: sync
 using Realms.Sync;
+using System.Threading.Tasks;
+// :state-uncomment-end:
+// :code-block-end:
 
 public class LeaderboardManager : MonoBehaviour
 {
@@ -23,18 +28,38 @@ public class LeaderboardManager : MonoBehaviour
     public List<Stat> topStats;
     public VisualElement root;
 
-
-    // 
     void Awake()
     {
         Instance = this;
     }
 
+    // :code-block-start: sync-open-realm-in-leaderboard
+    // :state-uncomment-start: sync
+    // public static async Task<Realm> GetRealm()
+    // {
+    //     var syncConfiguration = new SyncConfiguration("UnityTutorialPartition", RealmController.syncUser);
+    //     return await Realm.GetInstanceAsync(syncConfiguration);
+    // }
+    // :state-uncomment-end:
+    // :code-block-end:
+
+
+    // :code-block-start: set-logged-in-user-leaderboard-ui
+    // :state-start: start local
     public void setLoggedInUser(string loggedInUser)
+    // :state-end:
+    // :state-uncomment-start: sync
+    // public async void setLoggedInUser(string loggedInUser)
+    // :state-uncomment-end:
     {
         username = loggedInUser;
 
+        // :state-start: start local
         realm = Realm.GetInstance();
+        // :state-end:
+        // :state-start: sync
+        realm = await GetRealm();
+        // :state-end:
 
         // only create the leaderboard on the first run, consecutive restarts/reruns will already have a leaderboard created
         if (isLeaderboardGUICreated == false)
@@ -56,6 +81,7 @@ public class LeaderboardManager : MonoBehaviour
             isLeaderboardGUICreated = true;
         }
     }
+    // :code-block-end:
 
     public int getRealmPlayerTopStat()
     {
